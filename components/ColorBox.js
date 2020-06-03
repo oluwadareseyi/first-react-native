@@ -5,9 +5,16 @@ const ColorBox = ({ colorName, hexCode }) => {
   const boxColor = {
     backgroundColor: hexCode,
   };
+  const text = {
+    fontWeight: 'bold',
+    color:
+      parseInt(hexCode.replace('#', ''), 16) > 0xffffff / 1.1
+        ? '#000000'
+        : '#ffffff',
+  };
   return (
     <View style={[styles.box, boxColor]}>
-      <Text style={styles.text}>
+      <Text style={text}>
         {colorName} {hexCode}
       </Text>
     </View>
@@ -20,10 +27,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    fontWeight: 'bold',
-    color: '#ffffff',
   },
 });
 
