@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
+import PalettePreview from '../components/PalettePreview';
 
 const SOLARIZED = [
   { colorName: 'Base03', hexCode: '#002b36' },
@@ -48,13 +49,10 @@ const Home = ({ navigation }) => {
         data={COLOR_PALETTES}
         keyExtractor={(item) => item.paletteName}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.push('ColorPalette', item);
-            }}
-          >
-            <Text>{item.paletteName}</Text>
-          </TouchableOpacity>
+          <PalettePreview
+            onPress={() => navigation.push('ColorPalette', item)}
+            palette={item}
+          />
         )}
       />
     </View>
