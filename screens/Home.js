@@ -30,7 +30,7 @@ const Home = ({ navigation, route }) => {
   }, [fetchPalettes]);
 
   useEffect(() => {
-    newColorPalette && setPalettes((current) => [...current, newColorPalette]);
+    newColorPalette && setPalettes((current) => [newColorPalette, ...current]);
   }, [newColorPalette]);
   return (
     <FlatList
@@ -49,7 +49,7 @@ const Home = ({ navigation, route }) => {
         <TouchableOpacity
           onPress={() => navigation.navigate('ColorPaletteModal')}
         >
-          <Text style={styles.modalButton}>Launch Modal</Text>
+          <Text style={styles.modalButton}>Add a color scheme</Text>
         </TouchableOpacity>
       }
     />
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
   modalButton: {
     fontSize: 20,
     fontWeight: 'bold',
-    paddingVertical: 10,
+    marginBottom: 10,
+    color: 'teal',
   },
 });
 
