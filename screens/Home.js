@@ -4,7 +4,10 @@ import axios from 'axios';
 import PalettePreview from '../components/PalettePreview';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, route }) => {
+  const newColorPalette = route.params
+    ? route.params.newColorPalette
+    : undefined;
   const [palettes, setPalettes] = useState([]);
   const [isRefresh, setIsReFresh] = useState(false);
 
@@ -25,6 +28,10 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     fetchPalettes();
   }, [fetchPalettes]);
+
+  useEffect(() => {
+    newColorPalette && setPalettes((current) => [...current, newColorPalette]);
+  }, [newColorPalette]);
   return (
     <FlatList
       style={styles.list}
