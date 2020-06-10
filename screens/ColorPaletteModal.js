@@ -9,7 +9,6 @@ import {
   Switch,
   FlatList,
 } from 'react-native';
-import { Logs } from 'expo';
 
 const COLORS = [
   { colorName: 'AliceBlue', hexCode: '#F0F8FF' },
